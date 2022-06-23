@@ -5,11 +5,11 @@ const initialState = { email: '', password: '', loading: false };
 const user = (state = initialState, action) => {
   switch (action.type) {
   case 'EMAIL':
-    return { ...state, user: { ...state.user, email: action.info } };
+    return { ...state, email: action.info };
   case 'PASSWORD':
-    return { ...state, user: { ...state.user, password: action.info } };
-  case 'LOADING':
-    return { ...state, user: { ...state.user, loading: !state.user.loading } };
+    return { ...state, password: action.info };
+  case 'LOAD':
+    return { ...state, loading: !state.loading };
   default:
     return state;
   }

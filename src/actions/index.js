@@ -4,15 +4,6 @@
 // editor: false, // valor booleano que indica de uma despesa está sendo editada
 // idToEdit: 0, // valor numérico que armazena o id da despesa que esta sendo editada
 
-// case 'CURRENCIES':
-//   return { ...state, wallet: { ...state.wallet, currencies: action.info } };
-// case 'EXPENSES':
-//   return { ...state, wallet: { ...state.wallet, expenses: action.info } };
-// case 'EDITOR':
-//   return { ...state, wallet: { ...state.wallet, editor: action.info } };
-// case 'IDTOEDIT':
-//   return { ...state, wallet: { ...state.wallet, idToEdit: action.info } };
-
 // User actions
 function loadAct() {
   return { type: 'LOAD' };
@@ -23,7 +14,7 @@ function emailAct(info) {
 }
 
 function passwordAct(info) {
-  return { type: 'EMAIL', info };
+  return { type: 'PASSWORD', info };
 }
 
 // Wallet actions
