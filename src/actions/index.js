@@ -35,6 +35,24 @@ function IdToEditAct(info) {
   return { type: 'IDTOEDIT', info };
 }
 
+// API calling
+
+function getCurrencies() {
+  const endPoint = 'https://economia.awesomeapi.com.br/json/all';
+  return (dispatch) => {
+    dispatch(loadAct());
+    return fetch(endPoint)
+      .then((res) => res.json())
+      .then((res) => {
+        dispatch(currenciesAct(...Object.keys(res).filter((curr) => curr !== 'USDT')));
+        dispatch(loadAct());
+      })
+      .catch((error) => {
+        throw new Error(error);
+      });
+  };
+}
+
 const actions = {
   loadAct,
   emailAct,
@@ -43,6 +61,7 @@ const actions = {
   expensesAct,
   editorAct,
   IdToEditAct,
+  getCurrencies,
 };
 
 export default actions;

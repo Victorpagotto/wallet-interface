@@ -9,13 +9,13 @@ const initialState = {
 const wallet = (state = initialState, action) => {
   switch (action.type) {
   case 'CURRENCIES':
-    return { ...state, wallet: { ...state.wallet, currencies: action.info } };
+    return { ...state, currencies: action.info };
   case 'EXPENSES':
-    return { ...state, wallet: { ...state.wallet, expenses: action.info } };
+    return { ...state, expenses: action.info };
   case 'EDITOR':
-    return { ...state, wallet: { ...state.wallet, editor: !state.wallet.editor } };
+    return { ...state, editor: !state.wallet.editor };
   case 'IDTOEDIT':
-    return { ...state, wallet: { ...state.wallet, idToEdit: action.info } };
+    return { ...state, idToEdit: action.info };
   default:
     return state;
   }
