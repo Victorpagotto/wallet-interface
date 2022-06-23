@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import propTypes from 'prop-types';
 import actions from '../actions';
-import Loading from './Loading';
 
 class Wallet extends React.Component {
   componentDidMount() {
@@ -11,10 +10,7 @@ class Wallet extends React.Component {
   }
 
   render() {
-    const { userEmail, loading } = this.props;
-    if (loading) {
-      return <Loading />;
-    }
+    const { userEmail } = this.props;
     return (
       <div className="wallet-page">
         <header className="wallet-header">
@@ -35,9 +31,9 @@ class Wallet extends React.Component {
 
 const mapStateToProps = (state) => {
   const { user, wallet } = state;
-  const { email, loading } = user;
+  const { email } = user;
   const { currencies } = wallet;
-  return { userEmail: email, currencies, loading };
+  return { userEmail: email, currencies };
 };
 
 const mapDispatchToProps = (dispatch) => ({
@@ -47,7 +43,6 @@ const mapDispatchToProps = (dispatch) => ({
 Wallet.propTypes = {
   userEmail: propTypes.string.isRequired,
   getCurrencies: propTypes.func.isRequired,
-  loading: propTypes.bool.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Wallet);
