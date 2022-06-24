@@ -24,10 +24,10 @@
   margin: 10px;
 }
 
-.adder-form input, select {
+.adder-form input , select {
   background-color: white;
-  border-radius: 8px;
   border: solid 2px wheat;
+  border-radius: 8px;
   box-sizing: content-box;
   color: goldenrod;
   flex-grow: 1;
@@ -39,8 +39,8 @@
 
 .adder-form button {
   background-color: goldenrod;
+  border: solid 5px transparent;
   border-radius: 10px;
-  border:solid 5px transparent;
   color: wheat;
   font-size: 14px;
   font-weight: 700;
@@ -51,17 +51,18 @@
 
 .adder-form button:hover {
   background-color: transparent;
-  border:solid 5px goldenrod;
+  border: solid 5px goldenrod;
   color: goldenrod;
 }
 
 .adder-form button:active {
   background-color: gold;
-  border:solid 5px transparent;
+  border: solid 5px transparent;
   color: white;
 }
 
-@media  screen and ( max-width: 715px ) {
+@media screen and ( max-width : 715px ) {
+  
   .adder-form {
     align-items: flex-start;
     flex-flow: column wrap;
