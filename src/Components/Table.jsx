@@ -2,11 +2,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 import propTypes from 'prop-types';
 import '../CSS/adderForm.css';
-// import actions from '../actions';
+import actions from '../actions';
 
 class Table extends React.Component {
   render() {
-    const { expenses } = this.props;
+    const { expenses, deleteExpense } = this.props;
     return (
       <div className="Table-page">
         <table>
@@ -49,7 +49,15 @@ class Table extends React.Component {
                     <td>Real</td>
                     <td>
                       <button type="button">Editar</button>
-                      <button type="button">Excluir</button>
+                      <button
+                        type="button"
+                        data-testid="delete-btn"
+                        onClick={ () => {
+                          deleteExpense(id);
+                        } }
+                      >
+                        Excluir
+                      </button>
                     </td>
                   </tr>
                 );
@@ -65,11 +73,13 @@ const mapStateToProps = ({ wallet: { expenses } }) => ({
   expenses,
 });
 
-const mapDispatchToProps = () => ({
+const mapDispatchToProps = (dispatch) => ({
+  deleteExpense: (id) => dispatch(actions.deleteExpense(id)),
 });
 
 Table.propTypes = {
   expenses: propTypes.arrayOf(propTypes.object).isRequired,
+  deleteExpense: propTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Table);

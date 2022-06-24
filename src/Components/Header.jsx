@@ -4,8 +4,18 @@ import propTypes from 'prop-types';
 import '../CSS/header.css';
 
 class Header extends React.Component {
+  totalCalculator(expenses) {
+    return expenses.reduce((acc, expense) => {
+      const { value } = expense;
+      const exRate = parseFloat(Object.values(expense.exchangeRates)
+        .find((curr) => curr.code === expense.currency).ask);
+      acc += parseFloat(value) * exRate;
+      return acc;
+    }, 0);
+  }
+
   render() {
-    const { userEmail, totalExpense } = this.props;
+    const { userEmail, expenses } = this.props;
     return (
       <header className="header">
         <div className="header-container">
@@ -13,7 +23,7 @@ class Header extends React.Component {
           <p className="user-revenue">
             Total:
             <span className="money-amount" data-testid="total-field">
-              { totalExpense ? totalExpense.toFixed(2) : 0 }
+              { this.totalCalculator(expenses).toFixed(2) }
             </span>
             <span className="money-amount-currency" data-testid="header-currency-field">
               BRL
@@ -25,13 +35,13 @@ class Header extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  const { user: { email }, wallet: { totalExpense } } = state;
-  return { userEmail: email, totalExpense };
+  const { user: { email }, wallet: { expenses } } = state;
+  return { userEmail: email, expenses };
 };
 
 Header.propTypes = {
   userEmail: propTypes.string.isRequired,
-  totalExpense: propTypes.number.isRequired,
+  expenses: propTypes.arrayOf(propTypes.object).isRequired,
 };
 
 export default connect(mapStateToProps)(Header);

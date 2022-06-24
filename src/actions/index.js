@@ -30,11 +30,6 @@ function currenciesAct(...info) {
   return { type: 'CURRENCIES', info: [...info] };
 }
 
-function totalExpense(total, exchange) {
-  const converted = total * exchange;
-  return { type: 'TOTALEXPENSE', info: converted };
-}
-
 function expensesAct(info) {
   return async (dispatch) => {
     const { id, value, description, currency, method, tag } = info;
@@ -48,10 +43,6 @@ function expensesAct(info) {
       tag,
       exchangeRates,
     };
-    const ExchangeValue = parseFloat(Object.values(exchangeRates).find((exRate) => (
-      exRate.code === currency
-    )).ask);
-    dispatch(totalExpense(value, ExchangeValue));
     dispatch({ type: 'EXPENSES', info: infoObject });
   };
 }
@@ -62,6 +53,10 @@ function editorAct() {
 
 function IdToEditAct(info) {
   return { type: 'IDTOEDIT', info };
+}
+
+function deleteExpense(id) {
+  return { type: 'DELETE_EXPENSE', info: id };
 }
 
 // API calling
@@ -92,7 +87,7 @@ const actions = {
   IdToEditAct,
   getCurrencies,
   getExchanges,
-  totalExpense,
+  deleteExpense,
 };
 
 export default actions;

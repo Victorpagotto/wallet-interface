@@ -21,8 +21,9 @@ const wallet = (state = initialState, action) => {
     return { ...state, editor: !state.editor };
   case 'IDTOEDIT':
     return { ...state, idToEdit: action.info };
-  case 'TOTALEXPENSE':
-    return { ...state, totalExpense: state.totalExpense + action.info };
+  case 'DELETE_EXPENSE':
+    return { ...state,
+      expenses: state.expenses.filter((item) => item.id !== action.info) };
   default:
     return state;
   }
