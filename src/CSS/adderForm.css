@@ -1,0 +1,81 @@
+.adder-form-container {
+  align-items: center;
+  background-color: rgb(236, 228, 206);
+  border-bottom: solid 10px goldenrod;
+  color: goldenrod;
+  display: flex;
+  height: fit-content;
+  justify-content: center;
+  margin-top: 10px;
+  width: 100%;
+}
+
+.adder-form {
+  align-items: center;
+  display: flex;
+  flex-flow: row wrap;
+  height: 100%;
+  justify-content: space-around;
+  margin: 10px 0;
+  width: 90%;
+}
+
+.adder-form label {
+  margin: 10px;
+}
+
+.adder-form input, select {
+  background-color: white;
+  border-radius: 8px;
+  border: solid 2px wheat;
+  box-sizing: content-box;
+  color: goldenrod;
+  flex-grow: 1;
+  margin-left: 5px;
+  padding: 2px;
+  text-align: center;
+  width: 120px;
+}
+
+.adder-form button {
+  background-color: goldenrod;
+  border-radius: 10px;
+  border:solid 5px transparent;
+  color: wheat;
+  font-size: 14px;
+  font-weight: 700;
+  margin: 15px 0;
+  padding: 5px;
+  width: fit-content;
+}
+
+.adder-form button:hover {
+  background-color: transparent;
+  border:solid 5px goldenrod;
+  color: goldenrod;
+}
+
+.adder-form button:active {
+  background-color: gold;
+  border:solid 5px transparent;
+  color: white;
+}
+
+@media  screen and ( max-width: 715px ) {
+  .adder-form {
+    align-items: flex-start;
+    flex-flow: column wrap;
+    justify-content: center;
+    width: fit-content;
+  }
+
+  .adder-form button {
+    align-self: center;
+  }
+
+  .adder-form label {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+}

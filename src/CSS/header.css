@@ -1,0 +1,33 @@
+:root {
+  --tgr: rgb(218, 165, 32, 0.4);
+  --tw: rgb(255, 255, 255, 0.4);
+}
+
+.header {
+  height:80px;
+  width: 100%;
+}
+
+.header-container {
+  align-items: center;
+  background-image: linear-gradient(to left, var(--tw)10%, var(--tgr) 60%);
+  border-bottom: solid 10px goldenrod;
+  color: goldenrod;
+  display: flex;
+  height: 100%;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.user-email {
+  margin-left: 80px;
+}
+
+.user-revenue {
+  margin-right: 120px;
+  font-size: 1.3em;
+}
+
+.money-amount {
+  margin: 0 5px 0 20px;
+}

@@ -4,10 +4,13 @@
 // editor: false, // valor booleano que indica de uma despesa está sendo editada
 // idToEdit: 0, // valor numérico que armazena o id da despesa que esta sendo editada
 
-// User actions
-function loadAct() {
-  return { type: 'LOAD' };
+async function getExchanges() {
+  const endPoint = 'https://economia.awesomeapi.com.br/json/all';
+  return fetch(endPoint)
+    .then((res) => res.json());
 }
+
+// User actions
 
 function emailAct(info) {
   return { type: 'EMAIL', info };
@@ -17,14 +20,40 @@ function passwordAct(info) {
   return { type: 'PASSWORD', info };
 }
 
+function loadingAct() {
+  return { type: 'LOAD' };
+}
+
 // Wallet actions
 
 function currenciesAct(...info) {
   return { type: 'CURRENCIES', info: [...info] };
 }
 
-function expensesAct(...info) {
-  return { type: 'EXPENSES', info: [...info] };
+function totalExpense(total, exchange) {
+  const converted = total * exchange;
+  return { type: 'TOTALEXPENSE', info: converted };
+}
+
+function expensesAct(info) {
+  return async (dispatch) => {
+    const { id, value, description, currency, method, tag } = info;
+    const exchangeRates = await getExchanges();
+    const infoObject = {
+      id,
+      value,
+      description,
+      currency,
+      method,
+      tag,
+      exchangeRates,
+    };
+    const ExchangeValue = parseFloat(Object.values(exchangeRates).find((exRate) => (
+      exRate.code === currency
+    )).ask);
+    dispatch(totalExpense(value, ExchangeValue));
+    dispatch({ type: 'EXPENSES', info: infoObject });
+  };
 }
 
 function editorAct() {
@@ -40,21 +69,21 @@ function IdToEditAct(info) {
 function getCurrencies() {
   const endPoint = 'https://economia.awesomeapi.com.br/json/all';
   return (dispatch) => {
-    dispatch(loadAct());
+    dispatch(loadingAct());
     return fetch(endPoint)
       .then((res) => res.json())
-      .then((res) => {
+      .then(async (res) => {
         dispatch(currenciesAct(...Object.keys(res).filter((curr) => curr !== 'USDT')));
-        dispatch(loadAct());
+        dispatch(loadingAct());
       })
       .catch((error) => {
+        dispatch(loadingAct());
         throw new Error(error);
       });
   };
 }
 
 const actions = {
-  loadAct,
   emailAct,
   passwordAct,
   currenciesAct,
@@ -62,6 +91,8 @@ const actions = {
   editorAct,
   IdToEditAct,
   getCurrencies,
+  getExchanges,
+  totalExpense,
 };
 
 export default actions;

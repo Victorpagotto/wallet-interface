@@ -1,15 +1,16 @@
-.loading-page {
+.loading-component {
   align-items: center;
   background-color: rgb(5, 4, 61);
   display: flex;
-  height: 100vh;
+  height: 210px;
   justify-content: center;
   width: 100%;
 }
 
 .loading-message {
   color: goldenrod;
-  font-size: 4em;
+  font-size: 2em;
   font-style: italic;
   font-weight: 700;
+  text-align: center;
 }
