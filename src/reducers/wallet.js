@@ -24,6 +24,14 @@ const wallet = (state = initialState, action) => {
   case 'DELETE_EXPENSE':
     return { ...state,
       expenses: state.expenses.filter((item) => item.id !== action.info) };
+  case 'EDIT_EXPENSE':
+    return { ...state,
+      expenses: state.expenses.map((item) => {
+        if (item.id === action.info.id) {
+          return action.info;
+        }
+        return item;
+      }) };
   default:
     return state;
   }

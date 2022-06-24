@@ -59,6 +59,10 @@ function deleteExpense(id) {
   return { type: 'DELETE_EXPENSE', info: id };
 }
 
+function editExpense(info) {
+  return { type: 'EDIT_EXPENSE', info };
+}
+
 // API calling
 
 function getCurrencies() {
@@ -88,6 +92,7 @@ const actions = {
   getCurrencies,
   getExchanges,
   deleteExpense,
+  editExpense,
 };
 
 export default actions;

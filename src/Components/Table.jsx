@@ -6,7 +6,7 @@ import actions from '../actions';
 
 class Table extends React.Component {
   render() {
-    const { expenses, deleteExpense } = this.props;
+    const { expenses, deleteExpense, editExpense, isEditing } = this.props;
     return (
       <div className="Table-page">
         <table>
@@ -48,7 +48,16 @@ class Table extends React.Component {
                     </td>
                     <td>Real</td>
                     <td>
-                      <button type="button">Editar</button>
+                      <button
+                        type="button"
+                        data-testid="edit-btn"
+                        onClick={ () => {
+                          editExpense(id);
+                          isEditing();
+                        } }
+                      >
+                        Editar
+                      </button>
                       <button
                         type="button"
                         data-testid="delete-btn"
@@ -75,11 +84,15 @@ const mapStateToProps = ({ wallet: { expenses } }) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   deleteExpense: (id) => dispatch(actions.deleteExpense(id)),
+  editExpense: (id) => dispatch(actions.IdToEditAct(id)),
+  isEditing: () => dispatch(actions.editorAct()),
 });
 
 Table.propTypes = {
   expenses: propTypes.arrayOf(propTypes.object).isRequired,
   deleteExpense: propTypes.func.isRequired,
+  editExpense: propTypes.func.isRequired,
+  isEditing: propTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Table);
