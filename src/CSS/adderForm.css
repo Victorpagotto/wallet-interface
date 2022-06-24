@@ -62,7 +62,7 @@
 }
 
 @media screen and ( max-width : 715px ) {
-  
+
   .adder-form {
     align-items: flex-start;
     flex-flow: column wrap;

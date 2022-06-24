@@ -1,12 +1,12 @@
 :root {
 
-  --tgr:rgb(218, 165, 32, 0.4);
+  --tgr: rgb(218, 165, 32, 0.4);
 
-  --tw:rgb(255, 255, 255, 0.4);
+  --tw: rgb(255, 255, 255, 0.4);
 }
 
 .header {
-  height:80px;
+  height: 80px;
   width: 100%;
 }
 
