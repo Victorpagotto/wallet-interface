@@ -10,7 +10,7 @@
   width: 100%;
 }
 
-.expenses-table th, td {
+.expenses-table th , td {
   display: flex;
   justify-content: center;
   width: 12%;
@@ -44,6 +44,25 @@
 }
 
 .table-info {
-  padding: 20px 0;
   background-color: rgb(218, 165, 32, 0.2);
+  color: rgb(0, 0, 0, 0.6);
+  padding: 20px 0;
+}
+
+.expenses-table button {
+  border: solid 3px goldenrod;
+  background-color: rgb(218, 165, 32, 0.6);
+  border-radius: 5px;
+  margin-left: 5px;
+  padding: 5px;
+}
+
+.expenses-table button:hover {
+  background-color: goldenrod;
+  color: white;
+}
+
+.expenses-table button:active {
+  background-color: gold;
+  color: black;
 }
