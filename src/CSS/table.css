@@ -50,8 +50,8 @@
 }
 
 .expenses-table button {
-  border: solid 3px goldenrod;
   background-color: rgb(218, 165, 32, 0.6);
+  border: solid 3px goldenrod;
   border-radius: 5px;
   margin-left: 5px;
   padding: 5px;
