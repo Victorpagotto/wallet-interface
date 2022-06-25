@@ -1,0 +1,49 @@
+.table-page {
+  width: 100%;
+}
+
+.expenses-table {
+  align-items: center;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  width: 100%;
+}
+
+.expenses-table th, td {
+  display: flex;
+  justify-content: center;
+  width: 12%;
+}
+
+.table-head {
+  align-items: center;
+  background-color: rgb(218, 165, 32, 0.8);
+  border-top: solid 5px white;
+  color: white;
+  display: flex;
+  height: 50px;
+  width: 100%;
+}
+
+.expenses-table tbody {
+  align-items: center;
+  display: flex;
+  flex-flow: column;
+  width: 100%;
+}
+
+.expenses-table tr {
+  display: flex;
+  width: 100%;
+}
+
+.expenses-table th {
+  border-radius: 10px;
+  padding: 5px 20px;
+}
+
+.table-info {
+  padding: 20px 0;
+  background-color: rgb(218, 165, 32, 0.2);
+}

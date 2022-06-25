@@ -3,16 +3,17 @@ import { connect } from 'react-redux';
 import propTypes from 'prop-types';
 import '../CSS/adderForm.css';
 import actions from '../actions';
+import '../CSS/table.css';
 
 class Table extends React.Component {
   render() {
     const { expenses, deleteExpense, editExpense, isEditing } = this.props;
     return (
-      <div className="Table-page">
-        <table>
-          <thead>
-            <tr>
-              <th>Descrição</th>
+      <div className="table-page">
+        <table className="expenses-table">
+          <tbody>
+            <tr className="table-head">
+              <th className="description-cell">Descrição</th>
               <th>Tag</th>
               <th>Método de pagamento</th>
               <th>Valor</th>
@@ -22,8 +23,6 @@ class Table extends React.Component {
               <th>Moeda de conversão</th>
               <th>Editar/Excluir</th>
             </tr>
-          </thead>
-          <tbody>
             {
               expenses.map((expense) => {
                 const {
@@ -33,8 +32,8 @@ class Table extends React.Component {
                   .find((exRate) => exRate.code === currency);
                 const currName = currencyData.name.split('/')[0];
                 return (
-                  <tr key={ id }>
-                    <td>{ description }</td>
+                  <tr key={ id } className="table-info">
+                    <td className="description-cell">{ description }</td>
                     <td>{ tag }</td>
                     <td>{ method }</td>
                     <td>{ parseFloat(value).toFixed(2) }</td>
