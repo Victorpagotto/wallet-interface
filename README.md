@@ -49,7 +49,7 @@
 <h3 align="center">Description</h3>
 
 <p align="justify">In this project, a virtual wallet was developed with the functionality of converting between dollar and BRL. Using this wallet, the user can add, remove and edit expenses, as well as viewing such expenses in a table and the total already converted to another currency. The application uses Redux for managing data between its components, using its global state, facilitating implementations and the possible expansion of these if made.</p>
-<p align="justify">It was one of the first projects I made using Redux, and its main purpose was precisely learning and mastering this library. The application uses the currency Awesomeapi to perform real-time conversions, and this was one of the first projects in React in which I would also have to create the API handling on my own. The project was finished in 3 days, and although its styling was not mandatory, I decided to do it for increasing my CSS skills..</p>
+<p align="justify">It was one of the first projects I made using Redux, and its main purpose was precisely learning and mastering this library. The application uses the currency Awesomeapi to perform real-time conversions, and this was one of the first projects in React in which I would also have to create the API handling on my own. The project was finished in 3 days, and although its styling was not mandatory, I decided to do it for increasing my CSS skills.</p>
 
 -----------------------
 
